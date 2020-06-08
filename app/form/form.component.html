@@ -1,0 +1,110 @@
+<div id="formdiv" class="container">
+    <p id="weathersearch">Weather Search</p>
+    <form #form>
+        <div class="form-group row">
+            <label style = "font-size: 15px;" for="street" class="col-sm-2 col-form-label offset-sm-1">Street<span style="color: red;">*</span></label>
+            <div class="col-sm-5">
+                <input style = "font-size: 15px;" required noWhitespace [(ngModel)]="address.street" #street name="street" #streetNg="ngModel" (change)="log(streetNg);" id="street" type="text" class="form-control" placeholder="Enter Street Name">
+                <div class="text-danger" *ngIf="(streetNg.touched || streetNg.dirty) && !streetNg.valid && !checkbox.checked" #streetWarning>Please enter a street.</div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label style = "font-size: 15px;" for="city" class="col-sm-2 col-form-label offset-sm-1">City<span style="color: red;">*</span></label>
+            <div class="col-sm-5">
+                    <input style = "font-size: 15px;" matInput [matAutocomplete]="auto" required noWhitespace 
+                    [(ngModel)]="address.city" #city name="city" #cityNg="ngModel" (keyup)="citySearch()" id="city" type="text" class="form-control" placeholder="Enter City Name">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of options" [value]="option" style="background-color: white; color: black;">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                <div class="text-danger" *ngIf="(cityNg.touched || cityNg.dirty) && !cityNg.valid && !checkbox.checked" #cityWarning>Please enter a city.</div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label style = "font-size: 15px;" for="state" class="col-sm-2 col-form-label offset-sm-1">State<span style="color: red;">*</span></label>
+            <div class="col-sm-3">
+                <select style = "font-size: 15px;" [(ngModel)]="address.state" #state #stateNg="ngModel" id="state" name="state" class="form-control custom-select">
+                    <option selected value="">Select State</option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="DC">District Of Columbia</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NY">New York</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row form-check">
+                <div class="col-sm-10 offset-sm-1">
+                    <input #checkbox class="form-check-input" type="checkbox" id="gridCheck" (click)="disableField(); streetNg.control.markAsUntouched(); streetNg.control.markAsPristine(); cityNg.control.markAsUntouched(); cityNg.control.markAsPristine();">
+                    <label style = "font-size: 15px;" class="form-check-label" for="gridCheck">Current location</label>
+                </div>
+            </div>
+        </div>
+        <div class="offset-sm-1">
+        <button id = "searchbtn" class="btn btn-light" #search style="color: grey; border: 1px solid black;"[disabled]="street.value == '' || city.value == '' || state.value == ''" (click)="weatherSearch()">
+            <i class="material-icons" style="font-size: 18px; position: relative; top: 3px;">search</i>Search</button>   
+        <button id = "clearbtn" class="btn btn-light" #clear style="color: grey; border: 1px solid black;" (click)="clearForm(); streetNg.control.markAsUntouched(); streetNg.control.markAsPristine(); cityNg.control.markAsUntouched(); cityNg.control.markAsPristine();">
+            <i class="material-icons" style="font-size: 18px; position: relative; top: 3px;">clear_all</i>Clear</button>
+        </div>
+    </form>
+    <div id="nothing"></div>
+</div>
+<div style="text-align: center; margin-top: 30px;">
+<button id = "resultsbtn" class="btn btn-light" #results style="color: white; border: 1px solid black; margin-right: 7px; background-color: #6e91aa;" (click)="clickResults()">Results</button>
+<button id = "favoritesbtn" class="btn btn-light" #favorites style="color: grey; border: 1px solid black; margin-left: 7px;" (click)="clickFavorites()">Favorites</button>
+</div>
+<div #progress class="progress" style="max-width: 1100px; margin: 100px auto; display: none">
+    <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" 
+    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%"></div>
+</div>
+<div [hidden] = "isValid || click" class="alert alert-warning" role="alert" style="margin-top: 100px; max-width: 1100px; margin: 50px auto; width: 100%;">
+    Invalid Address.
+</div>

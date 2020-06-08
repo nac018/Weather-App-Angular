@@ -1,0 +1,115 @@
+#formdiv {
+    background-color:#6e91aa;
+    color: white;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 6px;
+    box-shadow: 5px 5px 5px #818181;
+    width: 95%;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+#weathersearch {
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: 50px;
+}
+
+#street {
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    color: black;
+}
+
+#city {
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    color: black;
+}
+
+#state {
+    color: black;
+}
+
+#searchbtn:hover {
+    background: white;
+    outline: none;
+    box-shadow: none;
+}
+
+#clearbtn:hover {
+    background: white;
+    outline: none;
+    box-shadow: none;
+}
+
+#searchbtn:focus {
+    background: white;
+    outline: none;
+    box-shadow: none;
+}
+
+#clearbtn:focus {
+    background: white;
+    outline: none;
+    box-shadow: none;
+}
+
+#searchbtn:active {
+    background: white;
+    outline: none;
+    box-shadow: none;
+}
+
+#clearbtn:active {
+    background: white;
+    outline: none;
+    box-shadow: none;
+}
+
+#resultsbtn:hover {
+    background: white;
+    outline: none;
+    box-shadow: none;
+}
+
+#favoritesbtn:hover {
+    background: white;
+    outline: none;
+    box-shadow: none;
+}
+
+#resultsbtn:focus {
+    background: white;
+    outline: none;
+    box-shadow: none;
+}
+
+#favoritesbtn:focus {
+    background: white;
+    outline: none;
+    box-shadow: none;
+}
+
+#resultsbtn:active {
+    background: #6e91aa;
+    outline: none;
+    box-shadow: none;
+}
+
+#favoritesbtn:active {
+    background: #6e91aa;
+    outline: none;
+    box-shadow: none;
+}
+
+#nothing {
+    height: 100px;
+}

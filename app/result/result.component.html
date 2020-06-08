@@ -1,0 +1,122 @@
+<div *ngIf="flag && isValid" id="resultTab">
+    <ul class="nav nav-tabs d-flex" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="current-tab" data-toggle="tab" href="#current" role="tab" aria-controls="current" aria-selected="true" (click)="drawCurrent()">Current</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="hourly-tab" data-toggle="tab" href="#hourly" role="tab" aria-controls="hourly" aria-selected="false" (click)="defaultHourly()">Hourly</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="weekly-tab" data-toggle="tab" href="#weekly" role="tab" aria-controls="weekly" aria-selected="false" (click)="drawHorizontalChart()">Weekly</a>
+        </li>
+        <li class="nav-item ml-auto" id="tab_rightmost">
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{twitter_url}}" target="_blank">
+                <img src='https://csci571.com/hw/hw8/Images/Twitter.png' height='42' width='42'>
+            </a>
+            <button (click)="favorited()" *ngIf = "!favorite" style="border: none;" class="ml-3 btn btn-light"><i class="material-icons">star_border</i></button>
+            <button (click)="unfavorited()" *ngIf = "favorite" style="border: none;" class="ml-3 btn btn-light"><i class="material-icons" style="color: #f8d556;">star</i></button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="current" role="tabpanel" aria-labelledby="current-tab">
+            <div class="card" id="currentCard">
+                <div class="card-body">
+                    <p id="currentCity" class="card-title">{{currentDetails.city}}</p>
+                    <img id="currentState" class="float-right" src="{{state_url}}"> 
+                    <p id="currentTimeZone" class="card-subtitle text-muted">{{currentDetails.timezone}}</p>
+                    
+                    <p id="currentTemperature">{{currentDetails.temperature}}
+                    <img src='https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_shape_oval-512.png' height='11' width='11' style="margin-bottom: 30px;"> 
+                    F</p>
+                    <p id="currentSummary">{{currentDetails.summary}}</p>
+                    <p>&nbsp;</p>
+                    <ul id="" class="list-group list-group-horizontal currentIcons" style="list-style: none;">
+                        <li id="" class="currentHumidity" *ngIf="currentDetails.humidity != '0' && currentDetails.humidity != ''">
+                            <img src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-16-512.png' id='humidityicon' placement="top" ngbTooltip="Humidity">
+                            <p>{{currentDetails.humidity}}</p>
+                        </li>
+                        <li id="" class="currentPressure" *ngIf="currentDetails.pressure != '0' && currentDetails.pressure != ''">
+                            <img src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-25-512.png' id='pressureicon' placement="top" ngbTooltip="Pressure">
+                            <p>{{currentDetails.pressure}}</p> 
+                        </li>
+                        <li id="" class="currentWindSpeed" *ngIf="currentDetails.windSpeed != '0' && currentDetails.windSpeed != ''">
+                            <img src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-27-512.png' id='windspeedicon' placement="top" ngbTooltip="Wind Speed">
+                            <p>{{currentDetails.windSpeed}}</p>
+                        </li>
+                        <li id="" class="currentVisibility" *ngIf="currentDetails.visibility != '0' && currentDetails.visibility != ''">
+                            <img src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-30-512.png' id='visibilityicon' placement="top" ngbTooltip="Visbility">
+                            <p>{{currentDetails.visibility}}</p>
+                        </li>
+                        <li id="" class="currentCloudCover" *ngIf="currentDetails.cloudCover != '0' && currentDetails.cloudCover != ''">
+                            <img src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-28-512.png' id='cloudcovericon' placement="top" ngbTooltip="Cloud Cover">
+                            <p>{{currentDetails.cloudCover}}</p>
+                        </li>
+                        <li id="" class="currentOzone" *ngIf="currentDetails.ozone != '0' && currentDetails.ozone != ''">
+                            <img src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-24-512.png' id='ozoneicon' placement="top" ngbTooltip="Ozone">
+                            <p>{{currentDetails.ozone}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="hourly" role="tabpanel" aria-labelledby="hourly-tab">
+            <select #hourlySelect class="custom-select" style="width: 80%; max-width: 400px; margin-top: 60px; margin-left: 10vw;" (change)="hourlyChart()" >
+                <option value="hourlyTemperature">Temperature</option>
+                <option value="hourlyPressure">Pressure</option>
+                <option value="hourlyHumidity">Humidity</option>
+                <option value="hourlyOzone">Ozone</option>
+                <option value="hourlyVisibility">Visibility</option>
+                <option value="hourlyWindSpeed">Wind Speed</option>
+            </select>
+            <div [hidden]="!temperatureSelected" style="height: 80vh; width: 80vw; margin: 70px auto;">
+                <canvas #myTemperatureChart id="myTemperatureChart"></canvas>
+            </div>
+            <div [hidden]="!pressureSelected" style="height: 80vh; width: 80vw; margin: 70px auto;">
+                <canvas #myPressureChart id="myPressureChart"></canvas>
+            </div>
+            <div [hidden]="!humiditySelected" style="height: 80vh; width: 80vw; margin: 70px auto;">
+                <canvas #myHumidityChart id="myHumidityChart"></canvas>
+            </div>
+            <div [hidden]="!ozoneSelected" style="height: 80vh; width: 80vw; margin: 70px auto;">
+                <canvas #myOzoneChart id="myOzoneChart"></canvas>
+            </div>
+            <div [hidden]="!visibilitySelected" style="height: 80vh; width: 80vw; margin: 70px auto;">
+                <canvas #myVisibilityChart id="myVisibilityChart"></canvas>
+            </div>
+            <div [hidden]="!windSpeedSelected" style="height: 80vh; width: 80vw; margin: 70px auto;">
+                <canvas #myWindSpeedChart id="myWindSpeedChart"></canvas>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="weekly" role="tabpanel" aria-labelledby="weekly-tab" style="height: 50vh; width: 80vw; margin: 70px auto;">
+            <div #myWeeklyChart id="myWeeklyChart"></div>
+        </div>
+    </div>
+</div>
+<div [hidden]="!fav">
+    <div [hidden] = "!norecords" class="alert alert-warning" role="alert" style="max-width: 1100px; margin: 50px auto; width: 100%;">
+        No Records
+    </div>
+    <div [hidden] = "norecords" style="margin-top: 50px;">
+        <table #table class="table table-striped" style="max-width: 1100px; margin: 50px auto 20px auto; width: 95%;">
+            <thead style="background-color: #6e91aa; text-align: center;">
+                <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Favorites</th>
+                </tr>
+            </thead>
+            <tbody style="text-align: center;">
+                <tr *ngFor="let elem of favoritedStuff; let i = index">
+                <td>{{i+1}}</td>
+                <td><img src={{elem.state_url}} width='50' height='50'></td>
+                <td><a href="#" (click)="favSearch(elem.city,elem.state)" placement="bottom" ngbTooltip="{{elem.city}}" style="text-decoration: none; color: blue;">{{elem.city}}</a></td>
+                <td>{{elem.state}}</td>
+                <td><button (click)="delete(elem.city,elem.state)" style="border: none; background-color: white;" class="btn"><i class="material-icons" style="color: #d3a641;">delete</i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

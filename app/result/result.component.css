@@ -1,0 +1,387 @@
+#current-tab {
+    color: black;
+}
+
+#hourly-tab {
+    color: black;
+}
+
+#weekly-tab {
+    color: black;
+}
+
+#resultTab {
+    margin-top: 100px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#currentCard {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #a5d0ee;
+    max-width: 750px;
+    width: 95%;
+    top: 30px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+
+#currentCity {
+    font-size: 4vw;
+    margin-left: 1vw;
+}
+
+@media screen and (max-width: 450px) {
+    #currentCity {
+        font-size: 18px;
+    }
+}
+@media screen and (min-width: 789px) {
+    #currentCity {
+        font-size: 30px;
+    }
+}
+#currentTimeZone {
+    font-size: 4vw;
+    margin-left: 1vw;
+}
+
+@media screen and (max-width: 450px) {
+    #currentTimeZone {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #currentTimeZone {
+        font-size: 30px;
+    }
+}
+
+#currentTemperature {
+    font-size: 5vw;
+    margin-left: 1vw;
+    margin-top: 13px;
+}
+
+@media screen and (max-width: 450px) {
+    #currentTemperature {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #currentTemperature {
+        font-size: 37px;
+    }
+}
+
+#currentSummary {
+    font-size: 3vw;
+    margin-left: 1vw;
+}
+
+@media screen and (max-width: 450px) {
+    #currentSummary {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #currentSummary {
+        font-size: 22px;
+    }
+}
+
+#currentState {
+    width: 180px;
+    height: 180px;
+    margin-right: 70px;
+}
+
+@media screen and (max-width: 570px) {
+    #currentState {
+        width: 125px;
+        height: 125px;
+        margin-right: -8px;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #currentState {
+        width: 180px;
+        height: 180px;
+        margin-right: 70px;
+    }
+}
+
+
+.currentIcons {
+    background-color: #a5d0ee;
+    border: none;
+    margin: 0 auto;
+}
+
+.currentHumidity {
+    width: 16.66%;
+    background-color: #a5d0ee;
+    border: none;
+    text-align: center;
+    font-size: 2vw;
+}
+
+@media screen and (max-width: 630px) {
+    .currentHumidity {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    .currentHumidity {
+        font-size: 16px;
+    }
+}
+
+.currentPressure {
+    width: 16.66%;
+    background-color: #a5d0ee;
+    border: none;
+    text-align: center;
+    font-size: 2vw;
+}
+
+@media screen and (max-width: 630px) {
+    .currentPressure {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    .currentPressure {
+        font-size: 16px;
+    }
+}
+
+.currentWindSpeed {
+    width: 16.67%;
+    background-color: #a5d0ee;
+    border: none;
+    text-align: center;
+    font-size: 2vw;
+}
+
+@media screen and (max-width: 630px) {
+    .currentWindSpeed {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    .currentWindSpeed {
+        font-size: 16px;
+    }
+}
+
+.currentVisibility {
+    width: 16.67%;
+    background-color: #a5d0ee;
+    border: none;
+    text-align: center;
+    font-size: 2vw;
+}
+
+@media screen and (max-width: 630px) {
+    .currentVisibility {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    .currentVisibility {
+        font-size: 16px;
+    }
+}
+
+.currentCloudCover {
+    width: 16.67%;
+    background-color: #a5d0ee;
+    border: none;
+    text-align: center;
+    font-size: 2vw;
+}
+
+@media screen and (max-width: 630px) {
+    .currentCloudCover {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    .currentCloudCover {
+        font-size: 16px;
+    }
+}
+
+.currentOzone {
+    width: 16.67%;
+    background-color: #a5d0ee;
+    border: none;
+    text-align: center;
+    font-size: 2vw;
+}
+
+@media screen and (max-width: 630px) {
+    .currentOzone {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    .currentOzone {
+        font-size: 16px;
+    }
+}
+
+
+#humidityicon {
+    height: auto;
+    width: 6vw;
+}
+
+@media screen and (max-width: 480px) {
+    #humidityicon {
+        width: 28px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #humidityicon {
+        width: 50px;
+        height: auto;
+    }
+}
+
+#pressureicon {
+    height: auto;
+    width: 6vw;
+}
+
+@media screen and (max-width: 480px) {
+    #pressureicon {
+        width: 28px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #pressureicon {
+        width: 50px;
+        height: auto;
+    }
+}
+
+#windspeedicon {
+    height: auto;
+    width: 6vw;
+}
+
+@media screen and (max-width: 480px) {
+    #windspeedicon {
+        width: 28px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #windspeedicon {
+        width: 50px;
+        height: auto;
+    }
+}
+
+#visibilityicon {
+    height: auto;
+    width: 6vw;
+}
+
+@media screen and (max-width: 480px) {
+    #visibilityicon {
+        width: 28px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #visibilityicon {
+        width: 50px;
+        height: auto;
+    }
+}
+
+#cloudcovericon {
+    height: auto;
+    width: 6vw;
+}
+
+@media screen and (max-width: 480px) {
+    #cloudcovericon {
+        width: 28px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #cloudcovericon {
+        width: 50px;
+        height: auto;
+    }
+}
+
+#ozoneicon {
+    height: auto;
+    width: 6vw;
+}
+
+@media screen and (max-width: 480px) {
+    #ozoneicon {
+        width: 28px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #ozoneicon {
+        width: 50px;
+        height: auto;
+    }
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #a5d0ee;
+ }
+
+.table-striped>tbody>tr:nth-child(even)>td, 
+.table-striped>tbody>tr:nth-child(even)>th {
+   background-color: #6e91aa;
+}
+
+#myTab {
+    width: 80%; 
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 450px) {
+    #myTab {
+        width: 100%; 
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 789px) {
+    #myTab {
+        width: 80%; 
+        margin: 0 auto;
+    }
+}

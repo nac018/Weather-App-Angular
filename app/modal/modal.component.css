@@ -1,0 +1,26 @@
+#bodyDetails{
+    background-color: #9cd1f1;
+}
+
+#bottomDetails p{ 
+    margin-bottom: 0px;
+}
+
+#modal {
+    font-family:'Roboto', sans-serif;
+}
+
+#bottomDetails{
+    margin-left: 1vw;
+}
+@media screen and (min-width: 575px) {
+    #bottomDetails {
+        margin-left: 250px;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    #bottomDetails {
+        margin-left: 20px;
+    }
+}
